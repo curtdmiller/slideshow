@@ -7,7 +7,28 @@
 		<link rel="stylesheet" href="/css/styles.css">
 	</head>
 	<body>
-		<h1>slide slide slide</h1>
+		<h1>Slip 'n' Slideshow</h1>
+		<div class="slideshow">
+			<div class="slide-group">
+				<div class="slide " data-slide="1">
+					<img class="slide-image" src="/img/test.png" alt="">
+				</div>
+				<div class="slide slide--next" data-slide="2">
+					<img class="slide-image" src="/img/alphachannel.svg" alt="">
+				</div>
+				<div class="slide slide-hidden" data-slide="3">
+					<img class="slide-image" src="/img/test2.png" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="slideshow-controls">
+			<button class="prev">&lt;</button>
+			<ul class="slideshow-pagination">
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+			</ul>
+			<button class="prev">&gt;</button>
+		</div>
 		<script src="/js/slideshow.js" charset="utf-8"></script>
 	</body>
 </html>
