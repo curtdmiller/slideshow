@@ -15,6 +15,7 @@
 	controls = document.getElementsByClassName( 'slideshow-controls' )[0];
 
 	buttonPrev = controls.getElementsByTagName( 'button' )[0];
+
 	buttonNext = controls.getElementsByTagName( 'button' )[1];
 
 	pagination = controls.getElementsByTagName( 'ul' )[0];
@@ -57,12 +58,33 @@
 		}
 	})
 
+	// Swipe Detection
+	var startX, endX, xDistance, direction;
+	container.addEventListener( 'touchstart', function(e){
+		startX = e.changedTouches[0].screenX;
+	}, false)
+
+	container.addEventListener( 'touchmove', function(e){
+		e.preventDefault();
+	}, false)
+
+	container.addEventListener( 'touchend', function(e){
+		endX = e.changedTouches[0].screenX;
+		direction = startX > endX ? 'left' : 'right';
+		distance = direction === 'right' ? endX - startX : startX - endX;
+		if (direction === 'right' && distance > 50) {
+			buttonPrev.click();
+		} else if (direction === 'left' && distance > 50) {
+			buttonNext.click();
+		}
+	}, false)
+
 	function gotoSlide(dest) {
 		var current = container.getElementsByClassName( 'visible' )[0];
 		var next = container.querySelector(  '[data-slide="' + dest + '"]' );
 		current.classList.remove( 'visible' );
 		next.classList.add( 'visible' )
 		// dataset.slide is a string representation of the number of the slide in slides array
-		slideGroup.style.left = '-' + next.dataset.slide + '00%';
+		slideGroup.style.left = parseInt( next.dataset.slide ) * -100 + '%';
 	}
 })()
