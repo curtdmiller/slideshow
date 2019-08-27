@@ -35,6 +35,14 @@
 		pagination.appendChild(li);
 	}
 
+	pages = pagination.querySelectorAll( 'li' );
+
+	pages.forEach( function( el, i ){
+		el.addEventListener( 'click', function() {
+			gotoSlide(i);
+		})
+	})
+
 	buttonPrev.addEventListener( 'click', function(){
 		var current = parseInt( container.getElementsByClassName( 'visible' )[0].dataset.slide );
 		if (current > 0) {
