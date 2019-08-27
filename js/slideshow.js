@@ -1,8 +1,6 @@
 ( function() {
 	var container, slideGroup, controls, buttonPrev, buttonNext, pagination;
 
-	var container, controls, slides, buttonPrev, buttonNext, pagination;
-
 	container = document.getElementsByClassName( 'slideshow' )[0];
 	if ( ! container ) {
 		return;
@@ -29,7 +27,6 @@
 		if ( i === 0 ) {
 			slide.className += ' visible';
 		}
-
 		// create pagination links
 		var li = document.createElement( 'li' );
 		li.innerHTML = '<a href="#" data-slide="' + i + '">' + ( i + 1 ) + '</a>';
@@ -69,6 +66,7 @@
 	}, false)
 
 	container.addEventListener( 'touchend', function(e){
+		// determine direction and distance moved, filter out touches without much movement
 		endX = e.changedTouches[0].screenX;
 		direction = startX > endX ? 'left' : 'right';
 		distance = direction === 'right' ? endX - startX : startX - endX;
@@ -85,6 +83,7 @@
 		current.classList.remove( 'visible' );
 		next.classList.add( 'visible' )
 		// dataset.slide is a string representation of the number of the slide in slides array
+		// parse int for the math then back to string for the %
 		slideGroup.style.left = parseInt( next.dataset.slide ) * -100 + '%';
 	}
 })()
