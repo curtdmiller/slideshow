@@ -42,11 +42,9 @@ h1 {
 	position: relative;
 	padding-bottom: 56.25%;
 	height: 0;
-	/* max-width: 711px; */
 	overflow: hidden;
 	top: 50%;
 	transform: translateY(-50%);
-	/* margin: 0 auto; */
 }
 
 .yt-embed iframe,
@@ -67,11 +65,9 @@ height: 100%;
 
 .slideshow-controls button {
 	border: none;
+	background: none;
 	cursor: pointer;
 	padding: 10px;
-
-	font-size: 2em;
-	font-weight: bold;
 }
 
 .slideshow-pagination {
